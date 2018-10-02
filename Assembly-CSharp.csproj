@@ -61,11 +61,11 @@
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/omar0/Desktop/Unity Projects/Spirit Hunter/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
- <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>C:/Users/omar0/Desktop/Unity Projects/Spirit Hunter/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
- </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/omar0/Desktop/Unity Projects/Spirit Hunter/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.PackageManagerUI.Editor">
+ <HintPath>C:/Users/omar0/Desktop/Unity Projects/Spirit Hunter/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>C:/Users/omar0/Desktop/Unity Projects/Spirit Hunter/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
