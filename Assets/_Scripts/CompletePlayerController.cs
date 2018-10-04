@@ -114,15 +114,20 @@ public class CompletePlayerController : MonoBehaviour
 		 
 		//Normal Shot
 		if (Input.GetKeyDown (KeyCode.X)) {
-			Vector2 pos;
-			if (lastDir)
-				pos = new Vector2 (transform.position.x + 2, transform.position.y);
-			else
-				pos = new Vector2 (transform.position.x - 2, transform.position.y);
-			Instantiate (lemon, pos, lemon.transform.rotation);
-		}
-	}
+			//Check curr weapon
 
+			if (GameObject.FindGameObjectsWithTag ("Projectile").Length < 3) { //Limit to 3 projectiles on screen at a time
+				Vector2 pos;
+				if (lastDir)
+					pos = new Vector2 (transform.position.x + 2, transform.position.y);
+				else
+					pos = new Vector2 (transform.position.x - 2, transform.position.y);
+				Instantiate (lemon, pos, lemon.transform.rotation);
+			}
+		}
+
+
+	}
 
 	IEnumerator Dash ()
 	{
