@@ -56,8 +56,7 @@
      <Compile Include="Assets\_Scripts\CompleteCameraController.cs" />
      <Compile Include="Assets\_Scripts\CompletePlayerController.cs" />
      <Compile Include="Assets\_Scripts\Enemy.cs" />
-     <Compile Include="Assets\_Scripts\lemonL.cs" />
-     <Compile Include="Assets\_Scripts\lemonR.cs" />
+     <Compile Include="Assets\_Scripts\Lemon.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/omar0/Desktop/Unity Projects/Spirit Hunter/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
