@@ -30,9 +30,18 @@ public class CompletePlayerController : MonoBehaviour
 	public bool onLeftWall;
 	public bool onRightWall;
 
+	public float chargeDelay;
+	public float chargeTimer;
+	public float TimeToCharge;
+	public bool fullCharge;
+	public bool isCharging;
+
 	private Rigidbody2D rb2d;
 	private SpriteRenderer sprite;
 	public GameObject lemon;
+	public GameObject chargeLemon;
+	//IEnumerator co;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -111,22 +120,45 @@ public class CompletePlayerController : MonoBehaviour
 //////////////////////////////////////////////////////
 //Blaster
 //////////////////////////////////////////////////////
-		 
+
 		//Normal Shot
 		if (Input.GetKeyDown (KeyCode.X)) {
+			chargeTimer = 0f;
+			isCharging = false;
 			//Check curr weapon
-
 			if (GameObject.FindGameObjectsWithTag ("Projectile").Length < 3) { //Limit to 3 projectiles on screen at a time
-				Vector2 pos;
-				if (lastDir)
-					pos = new Vector2 (transform.position.x + 2, transform.position.y);
-				else
-					pos = new Vector2 (transform.position.x - 2, transform.position.y);
-				Instantiate (lemon, pos, lemon.transform.rotation);
+				Fire (lemon);
 			}
+		}
+		//Charge Shot
+		if (Input.GetKey (KeyCode.X)&&!fullCharge) { //Stops counter from possible overflow
+			chargeTimer+=Time.deltaTime;
+			if (chargeTimer >= chargeDelay)
+				isCharging = true;
+			if (chargeTimer >= TimeToCharge)
+				fullCharge = true;
+		}
+		if (Input.GetKeyUp (KeyCode.X)) { //Fire shot if fully charged
+			if (fullCharge) {
+				Fire (chargeLemon);
+			}
+			fullCharge = false;
+			isCharging = false;
+
 		}
 
 
+	}
+
+	void Fire (GameObject projectile)
+	{
+		//Decide orientation/position of shot
+		Vector2 pos;
+		if (lastDir)
+			pos = new Vector2 (transform.position.x + 2, transform.position.y);
+		else
+			pos = new Vector2 (transform.position.x - 2, transform.position.y);
+		Instantiate (projectile, pos, projectile.transform.rotation);
 	}
 
 	IEnumerator Dash ()
@@ -186,6 +218,23 @@ public class CompletePlayerController : MonoBehaviour
 
 	}
 
+	/*
+
+	IEnumerator ChargeShot ()
+	{
+		fullCharge = false;
+		yield return new WaitForSeconds (chargeDelay); //Delay between holding button and start charging
+		float time = 0f; //Reset timer
+		//Charging
+		while (time < chargeTime) {
+			time += Time.deltaTime;
+			yield return null;
+		}
+		//Fully charged if it goes out of loop
+		fullCharge = true;
+	}
+
+*/
 
 	//////////////////////////////////////////////////////
 	//OnCollisionEnter
