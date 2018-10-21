@@ -7,7 +7,6 @@ public class CompleteCameraController : MonoBehaviour
 	public GameObject player;
 	//Public variable to store a reference to the player game object
 
-
 	private Vector3 offset;
 	//Private variable to store the offset distance between the player and camera
 
@@ -23,12 +22,6 @@ public class CompleteCameraController : MonoBehaviour
 	{
 		// Set the position of the camera's transform to be the same as the player's, but offset by the calculated offset distance.
 		transform.position = player.transform.position + offset;
-	}
-
-	void OnTriggerEnter2D (Collider2D other)
-	{
-		if (other.gameObject.CompareTag ("Enemy"))
-			other.gameObject.SetActive(false);
 	}
 
 }

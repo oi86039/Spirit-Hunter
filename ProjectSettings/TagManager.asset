@@ -9,6 +9,10 @@ TagManager:
   - RightWall
   - Enemy
   - Projectile
+  - Bad Lemon
+  - Bad Charged
+  - Lemon
+  - Charged
   layers:
   - Default
   - TransparentFX

@@ -4,8 +4,19 @@ using System.Collections;
 
 public class CompletePlayerController : MonoBehaviour
 {
+	//Debug
+	public bool undying;
+
 	private int health;
 	private Text healthText;
+	public bool invincible;
+	public float invincibleTime;
+
+	public Color defaultColor;
+	public Color hurtColor;
+	public Color invincibleColor;
+	public Color chargingColor;
+	public Color chargedColor;
 
 	public float speed;
 	private float defSpeed;
@@ -60,7 +71,8 @@ public class CompletePlayerController : MonoBehaviour
 	void Start ()
 	{
 		health = 30;
-		healthText = GameObject.Find("Canvas/Health").GetComponent<Text>();
+		healthText = GameObject.Find ("Canvas/Health").GetComponent<Text> ();
+		invincible = false;
 
 		defSpeed = speed;
 
@@ -94,18 +106,17 @@ public class CompletePlayerController : MonoBehaviour
 			HandleBlaster ();
 
 		HealthUpdate ();
-
 	}
 
-	void HealthUpdate (){
+	void HealthUpdate ()
+	{
 		healthText.text = "Health: \n" + health + " / 30";
 
-		if (health <= 0) {
+		if (health <= 0 && !undying) {
 			gameObject.SetActive (false);
 
 			//Respawn();
 		}
-
 	}
 
 	void canMove (bool y)
@@ -122,11 +133,14 @@ public class CompletePlayerController : MonoBehaviour
 	void Disabled (bool y)
 	{
 		if (y) {
-			canMove (false);
+            canMove(false);
 			canTurn = false;
 			canFire = false;
 			canJump = false;
 			canDash = false;
+			isDashing = false;
+			isJumping = false;
+
 		} else {
 			canMove (true);
 			canTurn = true;
@@ -193,17 +207,21 @@ public class CompletePlayerController : MonoBehaviour
 			chargeTimer = 0f;
 			isCharging = false;
 			//Check curr weapon
-			if (GameObject.FindGameObjectsWithTag ("Projectile").Length < 3) { //Limit to 3 projectiles on screen at a time
+			if (GameObject.FindGameObjectsWithTag ("Lemon").Length < 3) { //Limit to 3 projectiles on screen at a time
 				Fire (lemon);
 			}
 		}
 		//Charge Shot
 		if (Input.GetKey (KeyCode.X) && !fullCharge) { //Stops counter from possible overflow
 			chargeTimer += Time.deltaTime;
-			if (chargeTimer >= chargeDelay)
+			if (chargeTimer >= chargeDelay) {
 				isCharging = true;
-			if (chargeTimer >= TimeToCharge)
+				sprite.color = chargingColor;
+			}
+			if (chargeTimer >= TimeToCharge) {
 				fullCharge = true;
+				sprite.color = chargedColor;
+			}
 		}
 		if (Input.GetKeyUp (KeyCode.X)) { //Fire shot if fully charged
 			if (fullCharge) {
@@ -211,6 +229,7 @@ public class CompletePlayerController : MonoBehaviour
 			}
 			fullCharge = false;
 			isCharging = false;
+			sprite.color = defaultColor;
 		}
 	}
 
@@ -283,7 +302,7 @@ public class CompletePlayerController : MonoBehaviour
 
 	IEnumerator DamageKnock ()
 	{
-		float time = 0f; //Reset timer
+        float time = 0f; //Reset timer
 		Disabled (true);
 		rb2d.velocity = Vector2.zero; //Stop gravity and falling to jump naturally
 
@@ -305,18 +324,48 @@ public class CompletePlayerController : MonoBehaviour
 			yield return null; //Advance to next frame
 		}
 		Disabled (false);
+        sprite.color = invincibleColor;
+        StartCoroutine(InvincibilityFrames());
+
+    }
+
+    void TakeDamage (int damage)
+	{
+		if (!invincible) {
+            sprite.color = hurtColor;
+            health -= damage; //Will alter values based on enemy touched //Will also add damage detection to enemy script, not player script
+			if (health < 0)
+				health = 0;
+		}
+		StartCoroutine (DamageKnock ());
+        invincible = true;
 	}
 
+	IEnumerator InvincibilityFrames ()
+	{
+		yield return new WaitForSeconds (invincibleTime);
+		invincible = false;
+        sprite.color = defaultColor;
+
+	}
 	//----------------------------------------------------------------------------------------------------------------
 
 	void OnCollisionEnter2D (Collision2D other)
 	{
 		EnterLand (other);
 
+	}
+
+	void OnTriggerEnter2D (Collider2D other)
+	{
+		
 		if (other.gameObject.CompareTag ("Enemy")) {//Will have to differentiate enemy and bullet types for damage sake
-			health -= 5; //Will alter values based on enemy touched //Will also add damage detection to enemy script, not player script
-			StartCoroutine (DamageKnock ());
+			TakeDamage (5);
 		}
+		if (other.gameObject.CompareTag ("Bad Lemon") && !invincible) { //Projectiles do not knock back if damaged
+			TakeDamage (3);
+		}
+
 	}
 		
 	//When jumping, leaves floor and is disallowed from continuous jumping
