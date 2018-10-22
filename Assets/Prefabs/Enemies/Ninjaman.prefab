@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1726111140323826}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -40.2, y: 12.6, z: 0}
+  m_LocalPosition: {x: -33.09, y: 12.64, z: 0}
   m_LocalScale: {x: 3.2205, y: 5.8139997, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,7 +63,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 4
 --- !u!61 &61003364047893262
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -126,21 +126,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: Ninjaman
-  health: 13
-  jumpHeight: 0
-  jumpTime: 0
-  jumpDist: 0
-  timeToNext: 2.3
-  walkChance: 0.4
-  jumpChance: 0
-  backChance: 0
+  health: 8
+  timeToNext: 1.5
   lastDir: 0
+  canTurn: 0
   onScreen: 0
-  speed: 8
-  walkTime: 1.5
-  TimeBtwShots: 0.5
-  numShots: 3
+  speed: 17
   badLemon: {fileID: 1718344655165068, guid: ed0728bf481bfbf45b29374d34f425da, type: 2}
+  shotSpeed: 35
+  walkChance: 0.3
+  jumpChance: 0.4
+  backChance: 0
+  jumpHeight: 7.2
+  jumpTime: 0.35
+  jumpDist: 150
+  walkTime: 1.1
+  TimeBtwShots: 0.2
+  numShots: 3
 --- !u!212 &212681513880355142
 SpriteRenderer:
   m_ObjectHideFlags: 1

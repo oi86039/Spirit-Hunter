@@ -63,15 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\_Scripts\CompleteCameraController.cs" />
     <Compile Include="Assets\_Scripts\CompletePlayerController.cs" />
-    <Compile Include="Assets\_Scripts\Enemies\Aeroman.cs" />
-    <Compile Include="Assets\_Scripts\Enemies\Enemy.cs" />
-    <Compile Include="Assets\_Scripts\Enemies\Extendo.cs" />
-    <Compile Include="Assets\_Scripts\Enemies\Heavyman.cs" />
-    <Compile Include="Assets\_Scripts\Enemies\Mask.cs" />
-    <Compile Include="Assets\_Scripts\Enemies\Ninjaman.cs" />
-    <Compile Include="Assets\_Scripts\Enemies\Owlman.cs" />
-    <Compile Include="Assets\_Scripts\Enemies\Roller.cs" />
-    <Compile Include="Assets\_Scripts\Enemies\WallTurret.cs" />
+    <Compile Include="Assets\_Scripts\Enemy.cs" />
     <Compile Include="Assets\_Scripts\Projectiles\BadLemon.cs" />
     <Compile Include="Assets\_Scripts\Projectiles\BadLemonDiag.cs" />
     <Compile Include="Assets\_Scripts\Projectiles\Lemon.cs" />

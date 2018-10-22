@@ -381,12 +381,12 @@ public class CompletePlayerController : MonoBehaviour
 			onGround = true;
 		if (other.gameObject.CompareTag ("LeftWall")) {
 			onLeftWall = true;
-			speed /= 5; //Prevents getting stuck on walls
+			//speed /= 5; //Prevents getting stuck on walls
 			rb2d.gravityScale = wallGravity; //player descends slower on wall
 		}
 		if (other.gameObject.CompareTag ("RightWall")) {
 			onRightWall = true;
-			speed /= 5; //Prevents getting stuck on walls
+			//speed /= 5; //Prevents getting stuck on walls
 			rb2d.gravityScale = wallGravity; //player descends slower on wall
 		}
 	}
@@ -397,12 +397,12 @@ public class CompletePlayerController : MonoBehaviour
 			onGround = false;
 		if (other.gameObject.CompareTag ("LeftWall")) {
 			onLeftWall = false;
-			speed *= 5; //Prevents getting stuck on walls
+			//speed *= 5; //Prevents getting stuck on walls
 			rb2d.gravityScale = gravity; //player falls normally off of wall
 		}
 		if (other.gameObject.CompareTag ("RightWall")) {
 			onRightWall = false;
-			speed *= 5; //Prevents getting stuck on walls
+			//speed *= 5; //Prevents getting stuck on walls
 			rb2d.gravityScale = gravity; //player falls normally off of wall
 		}
 	}

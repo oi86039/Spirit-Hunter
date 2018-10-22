@@ -29,7 +29,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4808054369798514
 Transform:
   m_ObjectHideFlags: 1
@@ -62,7 +62,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 4
 --- !u!61 &61735356166941118
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -103,6 +103,7 @@ MonoBehaviour:
   health: 13
   timeToNext: 2.3
   lastDir: 0
+  canTurn: 0
   onScreen: 0
   speed: 8
   badLemon: {fileID: 1718344655165068, guid: ed0728bf481bfbf45b29374d34f425da, type: 2}

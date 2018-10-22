@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212873566779462796}
   - component: {fileID: 61480124566117010}
   - component: {fileID: 61557090727884478}
-  - component: {fileID: 114403819763835612}
+  - component: {fileID: 114433458516549830}
   - component: {fileID: 50709612110702546}
   m_Layer: 0
   m_Name: Owlman
@@ -63,7 +63,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 4
 --- !u!61 &61480124566117010
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -114,7 +114,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.11311492, y: 0.020757407}
   m_EdgeRadius: 0
---- !u!114 &114403819763835612
+--- !u!114 &114433458516549830
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,20 +122,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1573506817172256}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef029aed089b1924a83db61b364570e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 6655648088427ea43a77d7064de360fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyName: Owlman
   health: 8
   timeToNext: 2.3
   lastDir: 0
   canTurn: 0
   onScreen: 0
   speed: 8
-  shotSpeed: 27
   badLemon: {fileID: 1718344655165068, guid: ed0728bf481bfbf45b29374d34f425da, type: 2}
+  shotSpeed: 27
   walkChance: 0.4
+  jumpChance: 0
+  backChance: 0
+  jumpHeight: 0
+  jumpTime: 0
+  jumpDist: 0
   walkTime: 1.5
-  TimeBtwShots: 0.35
+  TimeBtwShots: 0.5
   numShots: 3
 --- !u!212 &212873566779462796
 SpriteRenderer:
