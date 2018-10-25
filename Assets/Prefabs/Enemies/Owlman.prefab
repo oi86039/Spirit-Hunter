@@ -127,7 +127,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Owlman
   health: 8
-  timeToNext: 2.3
+  timeToNext: 2
+  onWall: 0
+  sineMag: 0
   lastDir: 0
   canTurn: 0
   onScreen: 0
@@ -143,6 +145,7 @@ MonoBehaviour:
   walkTime: 1.5
   TimeBtwShots: 0.5
   numShots: 3
+  fired: 0
 --- !u!212 &212873566779462796
 SpriteRenderer:
   m_ObjectHideFlags: 1

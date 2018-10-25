@@ -9,6 +9,7 @@ public class BadLemon : MonoBehaviour
     //true = facing right, false = facing left
     private Rigidbody2D rb2d;
     public bool onScreen;
+    public string enemyName;
 
     Enemy enemy;
 
@@ -20,6 +21,7 @@ public class BadLemon : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy>();
+        enemyName = enemy.enemyName;
         onScreen = true;
         playerObj = GameObject.FindWithTag("Player");
         player = playerObj.GetComponent<CompletePlayerController>();
@@ -29,14 +31,24 @@ public class BadLemon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (lastDir)
+        if (enemyName.Equals("AeroOwlman"))
         {
-                rb2d.velocity = Vector2.right * speed;
+            if (lastDir)
+                rb2d.velocity = Vector2.right * speed + Vector2.down * (speed-15f);
+            else
+                rb2d.velocity = Vector2.left * speed + Vector2.down * (speed-15f);
+        }
+        else if (enemyName.Equals("Blowfish"))
+        {
+            rb2d.velocity = Vector2.up * speed;
         }
         else
         {
-           
+            if (lastDir)
+                rb2d.velocity = Vector2.right * speed;
+            else
                 rb2d.velocity = Vector2.left * speed;
+
         }
         CheckOnScreen();
         if (!onScreen)

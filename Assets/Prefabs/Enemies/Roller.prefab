@@ -118,6 +118,8 @@ MonoBehaviour:
   enemyName: Roller
   health: 5
   timeToNext: 0
+  onWall: 0
+  sineMag: 0
   lastDir: 0
   canTurn: 0
   onScreen: 0
@@ -126,13 +128,13 @@ MonoBehaviour:
   shotSpeed: 0
   walkChance: 0
   jumpChance: 0
-  backChance: 0
   jumpHeight: 0
   jumpTime: 0
   jumpDist: 0
   walkTime: 0
   TimeBtwShots: 0
   numShots: 0
+  fired: 0
 --- !u!212 &212022965241142190
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -169,7 +171,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1ae8e2af27cc5b94daf5a6d5af0c13fe, type: 3}
-  m_Color: {r: 0.8679245, g: 0.15966538, b: 0.44458106, a: 1}
+  m_Color: {r: 0.3268512, g: 0.39172882, b: 0.6132076, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

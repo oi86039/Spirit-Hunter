@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4855044285444126}
   - component: {fileID: 212680075482963302}
-  - component: {fileID: 61590457310662314}
   - component: {fileID: 114764787326049408}
   - component: {fileID: 50730653452432044}
+  - component: {fileID: 58262545176345648}
   m_Layer: 0
   m_Name: AeroOwlman
   m_TagString: Enemy
@@ -37,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1111399820669336}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.35, y: 27.96, z: 0}
-  m_LocalScale: {x: 5.92572, y: 5.6977196, z: 1}
+  m_LocalPosition: {x: -22.7, y: 25.3, z: 0}
+  m_LocalScale: {x: 7.288636, y: 7.9198303, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -63,8 +63,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
---- !u!61 &61590457310662314
-BoxCollider2D:
+--- !u!58 &58262545176345648
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -75,19 +75,9 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0.12532899}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.3609538
 --- !u!114 &114764787326049408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,20 +91,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: AeroOwlman
   health: 13
+  timeToNext: 1.6
+  onWall: 0
+  sineMag: 0
+  lastDir: 0
+  canTurn: 0
+  onScreen: 0
+  speed: 17
+  badLemon: {fileID: 1718344655165068, guid: ed0728bf481bfbf45b29374d34f425da, type: 2}
+  shotSpeed: 31
+  walkChance: 0.7
+  jumpChance: 0
   jumpHeight: 0
   jumpTime: 0
   jumpDist: 0
-  timeToNext: 2.3
-  walkChance: 0.4
-  jumpChance: 0
-  backChance: 0
-  lastDir: 0
-  onScreen: 0
-  speed: 8
-  walkTime: 1.5
-  TimeBtwShots: 0.5
-  numShots: 3
-  badLemon: {fileID: 1718344655165068, guid: ed0728bf481bfbf45b29374d34f425da, type: 2}
+  walkTime: 1
+  TimeBtwShots: 0.3
+  numShots: 2
+  fired: 0
 --- !u!212 &212680075482963302
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -150,7 +144,7 @@ SpriteRenderer:
   m_SortingLayerID: -694136231
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 30f98f17fcd3daa4d81e95aeed83765b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fdbb9edfd550e7743a721d4e4299c626, type: 3}
   m_Color: {r: 1, g: 0.7799357, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0

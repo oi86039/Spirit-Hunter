@@ -127,7 +127,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Ninjaman
   health: 8
-  timeToNext: 1.5
+  timeToNext: 1.1
+  onWall: 0
+  sineMag: 0
   lastDir: 0
   canTurn: 0
   onScreen: 0
@@ -143,6 +145,7 @@ MonoBehaviour:
   walkTime: 1.1
   TimeBtwShots: 0.2
   numShots: 3
+  fired: 0
 --- !u!212 &212681513880355142
 SpriteRenderer:
   m_ObjectHideFlags: 1
