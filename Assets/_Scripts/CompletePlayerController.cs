@@ -4,11 +4,15 @@ using System.Collections;
 
 public class CompletePlayerController : MonoBehaviour
 {
+    public Vector2 spawnPos;
+
     //Debug
     public bool undying;
 
     private int health;
     private Text healthText;
+    private GameObject respawn;
+
     public bool invincible;
     public float invincibleTime;
 
@@ -70,8 +74,13 @@ public class CompletePlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        spawnPos = transform.position;
+
         health = 30;
         healthText = GameObject.Find("Canvas/Health").GetComponent<Text>();
+        respawn = GameObject.Find("Canvas/Respawn");
+        respawn.SetActive(false); //Hide respawn button until death.
+
         invincible = false;
 
         defSpeed = speed;
@@ -115,7 +124,7 @@ public class CompletePlayerController : MonoBehaviour
 
         if (health <= 0 && !undying)
         {
-            gameObject.SetActive(false);
+            StartCoroutine(OnDeath());
 
             //Respawn();
         }
@@ -283,7 +292,7 @@ public class CompletePlayerController : MonoBehaviour
             rb2d.velocity = Vector2.zero;
             rb2d.gravityScale = 0f; //Anti-gravity if in air
         }
-        while (time < dashTime)
+        while (time < dashTime && !onLeftWall && !onRightWall) //Cancel dash if a wall is hit.
         {
             if (isJumping)
             { //Enables dash jump
@@ -368,19 +377,19 @@ public class CompletePlayerController : MonoBehaviour
 
     }
 
-    void TakeDamage(int damage)
+    void TakeDamage(int damage, bool knockback)
     {
         if (!invincible)
         {
             sprite.color = hurtColor;
             health -= damage; //Will alter values based on enemy touched //Will also add damage detection to enemy script, not player script
-            if (health < 0)
+            if (health <= 0)
                 health = 0;
             invincible = true;
             StartCoroutine(DamageKnock(true)); //Starts invincibility frames if take damage
 
         }
-        else
+        else if (knockback)
             StartCoroutine(DamageKnock(false)); // Knockback, but no invincibility frames
     }
 
@@ -391,11 +400,41 @@ public class CompletePlayerController : MonoBehaviour
         sprite.color = defaultColor;
 
     }
+
+    public void Respawn() {
+        gameObject.SetActive(true);
+        respawn.SetActive(false);
+        transform.position = spawnPos;
+        Disabled(false);
+        sprite.color = defaultColor;
+        health = 30;
+    }
+
+    IEnumerator OnDeath()
+    {
+
+        sprite.color = hurtColor;
+        Disabled(true);
+        rb2d.velocity = Vector2.zero;
+
+        yield return new WaitForSeconds(0.8f);
+
+        Disabled(false);
+        respawn.SetActive(true);
+        gameObject.SetActive(true);
+
+
+    }
     //----------------------------------------------------------------------------------------------------------------
 
     void OnCollisionEnter2D(Collision2D other)
     {
         EnterLand(other);
+
+        if (other.gameObject.CompareTag("Spikes"))
+        {//Will have to differentiate enemy and bullet types for damage sake
+            TakeDamage(30, false);
+        }
 
     }
 
@@ -403,16 +442,30 @@ public class CompletePlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {//Will have to differentiate enemy and bullet types for damage sake
-            TakeDamage(5);
+            TakeDamage(5, true);
+        }
+
+        if (other.gameObject.CompareTag("Primate"))
+        {//Will have to differentiate enemy and bullet types for damage sake
+            TakeDamage(7, false);
         }
         if (other.gameObject.CompareTag("Bad Lemon") && !invincible)
         { //Projectiles do not knock back if damaged
-            TakeDamage(3);
+            TakeDamage(3, true);
         }
         if (other.gameObject.CompareTag("Bad Charged") && !invincible)
         { //Projectiles do not knock back if damaged
-            TakeDamage(10);
+            TakeDamage(10, true);
         }
+        if (other.gameObject.CompareTag("Fists") && !invincible)
+        { //Projectiles do not knock back if damaged
+            TakeDamage(6, true);
+        }
+        if (other.gameObject.CompareTag("Checkpoint"))
+        { //Projectiles do not knock back if damaged
+            spawnPos = other.gameObject.transform.position;
+        }
+
 
     }
 
@@ -425,36 +478,40 @@ public class CompletePlayerController : MonoBehaviour
     void EnterLand(Collision2D other)
     {
         //Check land
-        if (other.gameObject.CompareTag("Floor"))
+        if (other.gameObject.CompareTag("Floor") || other.gameObject.CompareTag("Spikes"))
             onGround = true;
         if (other.gameObject.CompareTag("LeftWall"))
         {
             onLeftWall = true;
-            speed /= 5; //Prevents getting stuck on walls
+            canDash = false;
+            speed = 0.1f; //Prevents getting stuck on walls
             rb2d.gravityScale = wallGravity; //player descends slower on wall
         }
         if (other.gameObject.CompareTag("RightWall"))
         {
             onRightWall = true;
-            speed /= 5; //Prevents getting stuck on walls
+            canDash = false;
+            speed = 0.1f; //Prevents getting stuck on walls
             rb2d.gravityScale = wallGravity; //player descends slower on wall
         }
     }
 
     void ExitLand(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Floor"))
+        if (other.gameObject.CompareTag("Floor") || other.gameObject.CompareTag("Spikes"))
             onGround = false;
         if (other.gameObject.CompareTag("LeftWall"))
         {
             onLeftWall = false;
-            speed *= 5; //Prevents getting stuck on walls
+            canDash = true;
+            speed = defSpeed; //Prevents getting stuck on walls
             rb2d.gravityScale = gravity; //player falls normally off of wall
         }
         if (other.gameObject.CompareTag("RightWall"))
         {
             onRightWall = false;
-            speed *= 5; //Prevents getting stuck on walls
+            canDash = true;
+            speed = defSpeed; //Prevents getting stuck on walls
             rb2d.gravityScale = gravity; //player falls normally off of wall
         }
     }

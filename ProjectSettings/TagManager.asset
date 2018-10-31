@@ -13,6 +13,11 @@ TagManager:
   - Bad Charged
   - Lemon
   - Charged
+  - Fists
+  - Primate
+  - Spikes
+  - Wall
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

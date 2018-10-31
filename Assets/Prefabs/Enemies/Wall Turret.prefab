@@ -134,8 +134,8 @@ MonoBehaviour:
   canTurn: 0
   onScreen: 0
   speed: 8
-  badLemon: {fileID: 1718344655165068, guid: ed0728bf481bfbf45b29374d34f425da, type: 2}
-  shotSpeed: 27
+  badLemonL: {fileID: 1718344655165068, guid: 7e15242764c9b16418c998863c8fe24b, type: 2}
+  badLemonR: {fileID: 1718344655165068, guid: 5046b3a22e3fb784ea2dbb226d552ceb, type: 2}
   walkChance: 0.4
   jumpChance: 0
   jumpHeight: 0
@@ -144,7 +144,6 @@ MonoBehaviour:
   walkTime: 1.5
   TimeBtwShots: 0.5
   numShots: 3
-  fired: 0
 --- !u!212 &212658279828214300
 SpriteRenderer:
   m_ObjectHideFlags: 1

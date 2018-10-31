@@ -27,9 +27,10 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     private GameObject player;
     private SpriteRenderer sprite;
-    public GameObject badLemon;
+    public GameObject badLemonL;
+    public GameObject badLemonR;
 
-    public float shotSpeed;
+    //public float shotSpeed;
 
     public float walkChance;
     public float jumpChance;
@@ -42,14 +43,12 @@ public class Enemy : MonoBehaviour
     public float TimeBtwShots;
     public int numShots;
 
-    public bool fired;
-
     // Use this for initialization
     void Start()
     {
         pos = transform.position;
 
-        time = timeToNext - 1;
+        time = timeToNext - 0.3f;
         onScreen = false;
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -57,7 +56,7 @@ public class Enemy : MonoBehaviour
 
         //Change shot speed
         //if (enemyName.Equals("AeroOwlman"))
-        badLemon.GetComponent<BadLemon>().speed = shotSpeed;
+        //badLemon.GetComponent<BadLemon>().speed = shotSpeed;
     }
 
     // Update is called once per frame
@@ -243,11 +242,11 @@ public class Enemy : MonoBehaviour
     {
         if (lastDir)
         { // facing right
-            rb.velocity = Vector2.right * speed;
+            rb.velocity = new Vector2(speed, rb.velocity.y);
         }
         else
         {
-            rb.velocity = Vector2.left * speed;
+            rb.velocity = new Vector2(-speed, rb.velocity.y);
         }
     }
 
@@ -323,7 +322,10 @@ public class Enemy : MonoBehaviour
         int num = 0;
         while (num < numShots)
         {
-            Fire(badLemon);
+            if (lastDir)
+                Fire(badLemonR);
+            else
+                Fire(badLemonL);
             num++;
             yield return new WaitForSeconds(TimeBtwShots);
         }
@@ -399,9 +401,11 @@ public class Enemy : MonoBehaviour
         if (enemyName.Equals("Roller"))
         {
             if (other.gameObject.CompareTag("LeftWall"))
-                lastDir = true;
-            if (other.gameObject.CompareTag("RightWall"))
                 lastDir = false;
+            if (other.gameObject.CompareTag("RightWall"))
+                lastDir = true;
+            if (other.gameObject.CompareTag("Wall")) //Non walljump wall
+                lastDir = true;
         }
 
         if (enemyName.Equals("WallTurret"))
@@ -416,6 +420,14 @@ public class Enemy : MonoBehaviour
                 lastDir = true;
                 onWall = true;
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Spikes") && !enemyName.Equals("Mask"))
+        {
+            Destroy(gameObject);
         }
     }
 

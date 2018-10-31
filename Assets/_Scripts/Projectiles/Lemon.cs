@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Lemon : MonoBehaviour
 {
-
 	public float speed;
 	public bool lastDir;
 	public bool onScreen;
@@ -32,23 +31,8 @@ public class Lemon : MonoBehaviour
 		else
 			rb2d.velocity = Vector2.left * speed;
 
-		CheckOnScreen ();
-		if (!onScreen)
-			Destroy (gameObject);
+		
 	}
-
-	void CheckOnScreen ()
-	{
-		//Measure distance between player and enemy to determine if onscreen
-		float distanceX = player.transform.position.x - transform.position.x;
-		float distanceY = player.transform.position.y - transform.position.y;
-
-		if (Mathf.Abs (distanceX) <= 39f && Mathf.Abs (distanceY) <= 30.5f) //Creates bounding box
-			onScreen = true;
-		else
-			onScreen = false;
-	}
-
 
 	void OnTriggerEnter2D (Collider2D other)
 	{
@@ -57,5 +41,17 @@ public class Lemon : MonoBehaviour
 			//If we hit an enemy, Do damage
 			Destroy (gameObject);
 		}
-	}
+        if (other.gameObject.CompareTag("Fists"))
+        {
+            //If we hit an enemy, Do damage
+            Destroy(gameObject);
+        }
+
+        if (other.gameObject.CompareTag("MainCamera"))
+            Destroy(gameObject);
+
+        if (other.gameObject.CompareTag("LeftWall") || other.gameObject.CompareTag("RightWall"))
+            Destroy(gameObject);
+    }
+
 }

@@ -38,8 +38,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1573506817172256}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -40.2, y: 12.6, z: 0}
-  m_LocalScale: {x: 3.2205, y: 5.8139997, z: 1}
+  m_LocalPosition: {x: 122.40149, y: 52.52807, z: 0}
+  m_LocalScale: {x: 3.5200067, y: 6.8081937, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -134,18 +134,16 @@ MonoBehaviour:
   canTurn: 0
   onScreen: 0
   speed: 8
-  badLemon: {fileID: 1718344655165068, guid: ed0728bf481bfbf45b29374d34f425da, type: 2}
-  shotSpeed: 27
+  badLemonL: {fileID: 1718344655165068, guid: 7e15242764c9b16418c998863c8fe24b, type: 2}
+  badLemonR: {fileID: 1718344655165068, guid: 5046b3a22e3fb784ea2dbb226d552ceb, type: 2}
   walkChance: 0.4
   jumpChance: 0
-  backChance: 0
   jumpHeight: 0
   jumpTime: 0
   jumpDist: 0
   walkTime: 1.5
   TimeBtwShots: 0.5
   numShots: 3
-  fired: 0
 --- !u!212 &212873566779462796
 SpriteRenderer:
   m_ObjectHideFlags: 1

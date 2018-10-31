@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1001437197000880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -32.5, y: 27.2, z: 0}
+  m_LocalPosition: {x: 162.43044, y: 58.879448, z: 0}
   m_LocalScale: {x: 2.4372745, y: 4.5843387, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,19 +100,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: Mask
-  health: 13
+  health: 6
   timeToNext: 2.3
   onWall: 0
-  sineFreq: 0
+  sineMag: 10
   lastDir: 0
   canTurn: 0
   onScreen: 0
-  speed: 8
-  badLemon: {fileID: 1718344655165068, guid: ed0728bf481bfbf45b29374d34f425da, type: 2}
-  shotSpeed: 0
+  speed: 20
+  badLemonL: {fileID: 1718344655165068, guid: 7e15242764c9b16418c998863c8fe24b, type: 2}
+  badLemonR: {fileID: 1166287444746630, guid: 81eddddbb5daf914cb8ecf3df890acac, type: 2}
   walkChance: 0.4
   jumpChance: 0
-  backChance: 0
   jumpHeight: 0
   jumpTime: 0
   jumpDist: 0
