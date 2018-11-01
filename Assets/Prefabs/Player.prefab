@@ -123,7 +123,7 @@ MonoBehaviour:
   lastDir: 0
   chargeDelay: 0.7
   chargeTimer: 0
-  TimeToCharge: 1.9
+  TimeToCharge: 1.8
   fullCharge: 0
   isCharging: 0
   hitstun: 0.55

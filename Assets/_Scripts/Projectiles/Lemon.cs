@@ -50,8 +50,8 @@ public class Lemon : MonoBehaviour
         if (other.gameObject.CompareTag("MainCamera"))
             Destroy(gameObject);
 
-        if (other.gameObject.CompareTag("LeftWall") || other.gameObject.CompareTag("RightWall"))
-            Destroy(gameObject);
+        //if (other.gameObject.CompareTag("LeftWall") || other.gameObject.CompareTag("RightWall"))
+          //  Destroy(gameObject);
     }
 
 }

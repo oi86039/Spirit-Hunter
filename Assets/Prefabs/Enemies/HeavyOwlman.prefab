@@ -128,6 +128,8 @@ MonoBehaviour:
   enemyName: Heavyman
   health: 30
   timeToNext: 1.6
+  defColor: {r: 0.6509804, g: 0.019607844, b: 0, a: 1}
+  hurtColor: {r: 1, g: 0.030120485, b: 0, a: 1}
   onWall: 0
   sineMag: 0
   lastDir: 0
@@ -136,6 +138,8 @@ MonoBehaviour:
   speed: 4
   badLemonL: {fileID: 1322333777482010, guid: 688b127c22d848f45bbbe832c4f6ea7d, type: 2}
   badLemonR: {fileID: 1322333777482010, guid: 9c04520f9a8bfcb43b5ce0d23f92a3a6, type: 2}
+  smallDrop: {fileID: 1021182652321870, guid: eaafcf795332a2443bf7d9de49bcfb1d, type: 2}
+  bigDrop: {fileID: 1048195862552240, guid: 3ccdc8b58e933384a8d4f734be326f9e, type: 2}
   walkChance: 0.4
   jumpChance: 0
   jumpHeight: 0

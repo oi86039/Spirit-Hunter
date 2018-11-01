@@ -92,6 +92,8 @@ MonoBehaviour:
   enemyName: AeroOwlman
   health: 13
   timeToNext: 1.6
+  defColor: {r: 1, g: 0.7803922, b: 0, a: 1}
+  hurtColor: {r: 1, g: 0.34582376, b: 0, a: 1}
   onWall: 0
   sineMag: 0
   lastDir: 0
@@ -100,6 +102,8 @@ MonoBehaviour:
   speed: 17
   badLemonL: {fileID: 1166287444746630, guid: 484f2d000bc40b24c9c417ef3c769de6, type: 2}
   badLemonR: {fileID: 1166287444746630, guid: 81eddddbb5daf914cb8ecf3df890acac, type: 2}
+  smallDrop: {fileID: 1021182652321870, guid: eaafcf795332a2443bf7d9de49bcfb1d, type: 2}
+  bigDrop: {fileID: 1048195862552240, guid: 3ccdc8b58e933384a8d4f734be326f9e, type: 2}
   walkChance: 0.7
   jumpChance: 0
   jumpHeight: 0

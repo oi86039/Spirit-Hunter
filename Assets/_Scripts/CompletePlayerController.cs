@@ -435,6 +435,20 @@ public class CompletePlayerController : MonoBehaviour
         {//Will have to differentiate enemy and bullet types for damage sake
             TakeDamage(30, false);
         }
+        if (other.gameObject.CompareTag("Small Health"))
+        {
+            health += 5;
+            if (health >= 30)
+                health = 30;
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("Large Health"))
+        {
+            health += 10;
+            if (health >= 30)
+                health = 30;
+            Destroy(other.gameObject);
+        }
 
     }
 
@@ -451,7 +465,7 @@ public class CompletePlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Bad Lemon") && !invincible)
         { //Projectiles do not knock back if damaged
-            TakeDamage(3, true);
+            TakeDamage(5, true);
         }
         if (other.gameObject.CompareTag("Bad Charged") && !invincible)
         { //Projectiles do not knock back if damaged

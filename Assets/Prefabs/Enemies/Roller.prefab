@@ -118,6 +118,8 @@ MonoBehaviour:
   enemyName: Roller
   health: 5
   timeToNext: 0
+  defColor: {r: 0.3254902, g: 0.3921569, b: 0.6117647, a: 1}
+  hurtColor: {r: 0.6117647, g: 0.3254902, b: 0.34246543, a: 1}
   onWall: 0
   sineMag: 0
   lastDir: 0
@@ -126,6 +128,8 @@ MonoBehaviour:
   speed: 30
   badLemonL: {fileID: 1718344655165068, guid: 7e15242764c9b16418c998863c8fe24b, type: 2}
   badLemonR: {fileID: 1718344655165068, guid: 5046b3a22e3fb784ea2dbb226d552ceb, type: 2}
+  smallDrop: {fileID: 1021182652321870, guid: eaafcf795332a2443bf7d9de49bcfb1d, type: 2}
+  bigDrop: {fileID: 1048195862552240, guid: 3ccdc8b58e933384a8d4f734be326f9e, type: 2}
   walkChance: 0
   jumpChance: 0
   jumpHeight: 0

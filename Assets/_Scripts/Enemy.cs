@@ -14,6 +14,9 @@ public class Enemy : MonoBehaviour
     private float time;
     public float timeToNext;
 
+    public Color defColor;
+    public Color hurtColor;
+
     public bool onWall;
     public float sineMag;
 
@@ -29,6 +32,8 @@ public class Enemy : MonoBehaviour
     private SpriteRenderer sprite;
     public GameObject badLemonL;
     public GameObject badLemonR;
+    public GameObject smallDrop;
+    public GameObject bigDrop;
 
     //public float shotSpeed;
 
@@ -79,8 +84,10 @@ public class Enemy : MonoBehaviour
                 Blowfish();
             else if (enemyName.Equals("Mask"))
                 Mask();
-            else if (enemyName.Equals("WallTurret"))
-                WallTurret();
+            else if (enemyName.Equals("WallTurretLeft"))
+                WallTurretLeft();
+            else if (enemyName.Equals("WallTurretRight"))
+                WallTurretRight();
         }
         else
             rb.velocity = Vector2.zero;
@@ -229,7 +236,8 @@ public class Enemy : MonoBehaviour
     }
 
     void Blowfish()
-    {       //Fire 2s, wait 2s, repeat
+    {    
+        //Fire 2s, wait 2s, repeat
         time += Time.deltaTime;
         if (time >= timeToNext)
         {
@@ -260,8 +268,47 @@ public class Enemy : MonoBehaviour
         transform.position = pos + transform.up * Mathf.Sin(Time.time * 4) * sineMag;
     }
 
-    void WallTurret()
+    void WallTurretLeft() //Facing left
     {
+        lastDir = false;
+        canTurn = false; //Wall Turrets cannot turn
+
+        //Track player y position and follow it
+        float distY = player.transform.position.y - transform.position.y;
+
+        if (onWall)
+        {
+            //Track player y position and follow it
+            if (distY < 0) //If player is below turret
+                rb.velocity = (Vector2.down * speed);
+            else if (distY > 0)
+                rb.velocity = (Vector2.up * speed);
+            else
+                rb.velocity = Vector2.zero;
+        }
+
+        else
+        { //Do the opposite until on the wall
+            if (distY > 0) //If player is below turret
+                rb.velocity = (Vector2.down * speed);
+            else if (distY < 0)
+                rb.velocity = (Vector2.up * speed);
+            else
+                rb.velocity = Vector2.zero;
+        }
+        //Do action every x seconds
+        time += Time.deltaTime;
+        if (time >= timeToNext)
+        {   //After delay, do action
+            StartCoroutine(Blaster());
+            time = 0.0f;
+        }
+    }
+    void WallTurretRight()
+    {
+        lastDir = true;
+        canTurn = false; //Wall Turrets cannot turn
+
         //Track player y position and follow it
         float distY = player.transform.position.y - transform.position.y;
 
@@ -381,11 +428,24 @@ public class Enemy : MonoBehaviour
 
     void TakeDamage(int damage)
     {
+        StartCoroutine(HurtColor());
         health -= damage; //Will alter values based on enemy touched //Will also add damage detection to enemy script, not player script
-        if (health <= 0)
+        if (health <= 0) {
+            float state = Random.value;
+            if (state < 0.3)
+                Instantiate(smallDrop,transform.position,smallDrop.transform.rotation);
+            else if (state < 0.2)
+                Instantiate(bigDrop, transform.position, bigDrop.transform.rotation);
             Destroy(gameObject);
     }
+    }
 
+    IEnumerator HurtColor()
+    {
+        sprite.color = hurtColor;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = defColor;
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -402,9 +462,9 @@ public class Enemy : MonoBehaviour
         {
             if (other.gameObject.CompareTag("LeftWall"))
                 lastDir = false;
-            if (other.gameObject.CompareTag("RightWall"))
+            else if (other.gameObject.CompareTag("RightWall"))
                 lastDir = true;
-            if (other.gameObject.CompareTag("Wall")) //Non walljump wall
+            else if (other.gameObject.CompareTag("Wall")) //Non walljump wall
                 lastDir = true;
         }
 

@@ -92,6 +92,8 @@ MonoBehaviour:
   enemyName: Blowfish
   health: 7
   timeToNext: 2.8
+  defColor: {r: 0.21568629, g: 0.6117647, b: 0.32941177, a: 1}
+  hurtColor: {r: 0.6117647, g: 0.34128013, b: 0.21568628, a: 1}
   onWall: 0
   sineMag: 0
   lastDir: 0
@@ -100,6 +102,8 @@ MonoBehaviour:
   speed: 13
   badLemonL: {fileID: 1718344655165068, guid: 63719d55b4cb8ac42947fcc10511f016, type: 2}
   badLemonR: {fileID: 1718344655165068, guid: 63719d55b4cb8ac42947fcc10511f016, type: 2}
+  smallDrop: {fileID: 1021182652321870, guid: eaafcf795332a2443bf7d9de49bcfb1d, type: 2}
+  bigDrop: {fileID: 1048195862552240, guid: 3ccdc8b58e933384a8d4f734be326f9e, type: 2}
   walkChance: 0.2
   jumpChance: 0
   jumpHeight: 0

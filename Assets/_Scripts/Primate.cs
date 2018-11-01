@@ -219,7 +219,8 @@ public class Primate : MonoBehaviour
         healthText.text = "Boss\nHealth: \n" + health + " / 70";
     }
 
-            IEnumerator HurtColor() {
+    IEnumerator HurtColor()
+    {
         sprite.color = hurtColor;
         yield return new WaitForSeconds(0.1f);
         sprite.color = defColor;

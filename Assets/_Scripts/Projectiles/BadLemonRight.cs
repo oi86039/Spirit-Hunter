@@ -50,6 +50,9 @@ public class BadLemonRight : MonoBehaviour
             player.lastDir = false; //Knockback player in correct orientation
             Destroy(gameObject);
         }
+        else if (other.gameObject.CompareTag("LeftWall") || other.gameObject.CompareTag("RightWall"))
+            Destroy(gameObject);
+
     }
 
 }

@@ -50,6 +50,8 @@ public class BadLemonUp : MonoBehaviour
             player.lastDir = false; //Knockback player in correct orientation
             Destroy(gameObject);
         }
+        if (other.gameObject.CompareTag("Ceiling") || other.gameObject.CompareTag("Floor"))
+            Destroy(gameObject);
     }
 
 }

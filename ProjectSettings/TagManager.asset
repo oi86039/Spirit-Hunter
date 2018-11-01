@@ -18,6 +18,9 @@ TagManager:
   - Spikes
   - Wall
   - Checkpoint
+  - Small Health
+  - Large Health
+  - Ceiling
   layers:
   - Default
   - TransparentFX
