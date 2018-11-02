@@ -65,7 +65,7 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         CheckOnScreen();
         if (onScreen)
@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour
         float distanceX = player.transform.position.x - transform.position.x;
         float distanceY = player.transform.position.y - transform.position.y;
 
-        if (Mathf.Abs(distanceX) <= 38f && Mathf.Abs(distanceY) <= 30.5f) //Creates bounding box
+        if (Mathf.Abs(distanceX) <= 58.66f && Mathf.Abs(distanceY) <= 36f) //Creates bounding box
             onScreen = true;
         else
             onScreen = false;
@@ -432,9 +432,9 @@ public class Enemy : MonoBehaviour
         health -= damage; //Will alter values based on enemy touched //Will also add damage detection to enemy script, not player script
         if (health <= 0) {
             float state = Random.value;
-            if (state < 0.3)
+            if (state < 0.4)
                 Instantiate(smallDrop,transform.position,smallDrop.transform.rotation);
-            else if (state < 0.2)
+            else if (state < 0.25)
                 Instantiate(bigDrop, transform.position, bigDrop.transform.rotation);
             Destroy(gameObject);
     }

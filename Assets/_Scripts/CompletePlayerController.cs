@@ -6,12 +6,13 @@ public class CompletePlayerController : MonoBehaviour
 {
     public Vector2 spawnPos;
 
+    public MySceneManager sceneManager;
+
     //Debug
     public bool undying;
 
     private int health;
     private Text healthText;
-    private GameObject respawn;
 
     public bool invincible;
     public float invincibleTime;
@@ -78,8 +79,6 @@ public class CompletePlayerController : MonoBehaviour
 
         health = 30;
         healthText = GameObject.Find("Canvas/Health").GetComponent<Text>();
-        respawn = GameObject.Find("Canvas/Respawn");
-        respawn.SetActive(false); //Hide respawn button until death.
 
         invincible = false;
 
@@ -101,6 +100,7 @@ public class CompletePlayerController : MonoBehaviour
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate()
     {
+
         HandleMovement();
 
         if (canJump)
@@ -122,12 +122,9 @@ public class CompletePlayerController : MonoBehaviour
     {
         healthText.text = "Health: \n" + health + " / 30";
 
-        if (health <= 0 && !undying)
+        if (health <= 0 && !undying) //Undying = debug mode
         {
-            StartCoroutine(OnDeath());
-
-            //Respawn();
-        }
+            Respawn();        }
     }
 
     void canMove(bool y)
@@ -384,7 +381,10 @@ public class CompletePlayerController : MonoBehaviour
             sprite.color = hurtColor;
             health -= damage; //Will alter values based on enemy touched //Will also add damage detection to enemy script, not player script
             if (health <= 0)
+            {
                 health = 0;
+
+            }
             invincible = true;
             StartCoroutine(DamageKnock(true)); //Starts invincibility frames if take damage
 
@@ -402,29 +402,11 @@ public class CompletePlayerController : MonoBehaviour
     }
 
     public void Respawn() {
-        gameObject.SetActive(true);
-        respawn.SetActive(false);
         transform.position = spawnPos;
-        Disabled(false);
         sprite.color = defaultColor;
         health = 30;
     }
 
-    IEnumerator OnDeath()
-    {
-
-        sprite.color = hurtColor;
-        Disabled(true);
-        rb2d.velocity = Vector2.zero;
-
-        yield return new WaitForSeconds(0.8f);
-
-        Disabled(false);
-        respawn.SetActive(true);
-        gameObject.SetActive(true);
-
-
-    }
     //----------------------------------------------------------------------------------------------------------------
 
     void OnCollisionEnter2D(Collision2D other)
@@ -479,7 +461,9 @@ public class CompletePlayerController : MonoBehaviour
         { //Projectiles do not knock back if damaged
             spawnPos = other.gameObject.transform.position;
         }
-
+        if (other.gameObject.CompareTag("Boss Door")) {
+            sceneManager.LoadNextScene();// (SceneManager.GetActiveScene().buildIndex + 1); //Load next scene in hierarchy
+        }
 
     }
 

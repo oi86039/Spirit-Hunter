@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1869367371929998}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.86, y: 14.74, z: 0}
+  m_LocalPosition: {x: 1608.6527, y: 27.739643, z: 0}
   m_LocalScale: {x: 9.802986, y: 10.21714, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -117,8 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fistDiag: 0
   health: 70
-  timeToNext: 2.6
-  angryTimeToNext: 2.3
+  timeToNext: 2.1
+  angryTimeToNext: 1.8
   defColor: {r: 1, g: 0, b: 0.8941177, a: 1}
   hurtColor: {r: 0.6320754, g: 0.04472231, b: 0.04472231, a: 1}
   angryColor: {r: 0.9622642, g: 0.040850822, b: 0.040850822, a: 1}
@@ -130,8 +130,8 @@ MonoBehaviour:
   fist: {fileID: 1329177923247866, guid: 2c06b0aa8f0bf2347a1b371dc8e6dfd0, type: 2}
   shotSpeed: 75
   angryShotSpeed: 90
-  chargeChance: 0.3
-  fistChance: 0.3
+  chargeChance: 0.2
+  fistChance: 0.4
   fistDiagChance: 0
   jumpChance: 0.3
   jumpHeight: 40

@@ -35,7 +35,7 @@ public class BadLemonDiagLeft : MonoBehaviour
         float distanceX = player.transform.position.x - transform.position.x;
         float distanceY = player.transform.position.y - transform.position.y;
 
-        if (Mathf.Abs(distanceX) <= 39f && Mathf.Abs(distanceY) <= 30.5f) //Creates bounding box
+        if (Mathf.Abs(distanceX) <= 58.66f && Mathf.Abs(distanceY) <= 36f) //Creates bounding box
             onScreen = true;
         else
             onScreen = false;

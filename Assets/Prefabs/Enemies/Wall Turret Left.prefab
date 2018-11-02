@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: WallTurretLeft
-  health: 11
+  health: 8
   timeToNext: 2.3
   defColor: {r: 0.39607847, g: 0, b: 0.47058827, a: 1}
   hurtColor: {r: 0.7075472, g: 0.01668743, b: 0.023525031, a: 1}

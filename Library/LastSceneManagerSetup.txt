@@ -5,3 +5,9 @@ sceneSetups:
 - path: Assets/_Scenes/Level.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/_Scenes/Rest_Room.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/_Scenes/Boss_Room.unity
+  isLoaded: 0
+  isActive: 0

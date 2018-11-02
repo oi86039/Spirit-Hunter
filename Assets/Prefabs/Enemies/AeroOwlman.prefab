@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: AeroOwlman
-  health: 13
+  health: 12
   timeToNext: 1.6
   defColor: {r: 1, g: 0.7803922, b: 0, a: 1}
   hurtColor: {r: 1, g: 0.34582376, b: 0, a: 1}

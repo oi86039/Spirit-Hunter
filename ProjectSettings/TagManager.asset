@@ -21,6 +21,7 @@ TagManager:
   - Small Health
   - Large Health
   - Ceiling
+  - Boss Door
   layers:
   - Default
   - TransparentFX

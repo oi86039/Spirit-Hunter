@@ -7,7 +7,6 @@ public class Primate : MonoBehaviour
 {
     private Text healthText;
 
-    public bool fistDiag; //Chooses between horizonal and diagonal fist shot
     //Determines which enemy behavior to use.
     public int health;
     private float time;
@@ -33,7 +32,6 @@ public class Primate : MonoBehaviour
     public float angryShotSpeed;
 
     public float chargeChance;
-    public float fistChance;
     public float fistDiagChance;
     public float jumpChance;
 
@@ -51,7 +49,7 @@ public class Primate : MonoBehaviour
     {
         healthText = GameObject.Find("Canvas/Boss Health").GetComponent<Text>();
 
-        time = timeToNext - 1;
+        time = timeToNext;
         onScreen = false;
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -64,25 +62,10 @@ public class Primate : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        CheckOnScreen();
-        if (onScreen)
-            PrimateBehav();
-        else
-            rb.velocity = Vector2.zero;
+    {        
+        PrimateBehav();
+            //rb.velocity = Vector2.zero;
         HealthUpdate();
-    }
-
-    void CheckOnScreen()
-    {
-        //Measure distance between player and enemy to determine if onscreen
-        float distanceX = player.transform.position.x - transform.position.x;
-        float distanceY = player.transform.position.y - transform.position.y;
-
-        if (Mathf.Abs(distanceX) <= 76f && Mathf.Abs(distanceY) <= 60f) //Creates bounding box
-            onScreen = true;
-        else
-            onScreen = false;
     }
 
     void HandleOrientation()
@@ -110,6 +93,7 @@ public class Primate : MonoBehaviour
         {
             defColor = angryColor;
             timeToNext = angryTimeToNext;
+            shotSpeed = angryShotSpeed;
         }
         HandleOrientation();
         //Do action every x seconds
@@ -129,7 +113,7 @@ public class Primate : MonoBehaviour
                 StartCoroutine(Jump());
             }
             //Fire
-            else if (state < fistChance)
+            else
             {
                 StartCoroutine(FireFists());
             }

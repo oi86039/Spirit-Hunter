@@ -100,13 +100,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  speed: 75
+  speed: 80
   slowSpeed: 25
   lastDir: 0
   defColor: {r: 1, g: 0.909804, b: 0.03137255, a: 1}
   hurtColor: {r: 0.9150943, g: 0.26992735, b: 0.047481313, a: 1}
   fistTime: 1.6
-  range: 60
+  range: 70
 --- !u!212 &212225054880172668
 SpriteRenderer:
   m_ObjectHideFlags: 1

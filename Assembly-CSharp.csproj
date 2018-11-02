@@ -64,6 +64,7 @@
     <Compile Include="Assets\_Scripts\CompleteCameraController.cs" />
     <Compile Include="Assets\_Scripts\CompletePlayerController.cs" />
     <Compile Include="Assets\_Scripts\Enemy.cs" />
+    <Compile Include="Assets\_Scripts\MySceneManager.cs" />
     <Compile Include="Assets\_Scripts\Primate.cs" />
     <Compile Include="Assets\_Scripts\Projectiles\BadLemonDiagLeft.cs" />
     <Compile Include="Assets\_Scripts\Projectiles\BadLemonDiagRight.cs" />

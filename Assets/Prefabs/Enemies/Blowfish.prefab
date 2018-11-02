@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: Blowfish
-  health: 7
+  health: 5
   timeToNext: 2.8
   defColor: {r: 0.21568629, g: 0.6117647, b: 0.32941177, a: 1}
   hurtColor: {r: 0.6117647, g: 0.34128013, b: 0.21568628, a: 1}

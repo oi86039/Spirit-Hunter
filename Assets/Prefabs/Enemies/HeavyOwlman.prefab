@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: Heavyman
-  health: 30
+  health: 40
   timeToNext: 1.6
   defColor: {r: 0.6509804, g: 0.019607844, b: 0, a: 1}
   hurtColor: {r: 1, g: 0.030120485, b: 0, a: 1}

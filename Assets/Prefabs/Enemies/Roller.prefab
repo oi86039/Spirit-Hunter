@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: Roller
-  health: 5
+  health: 3
   timeToNext: 0
   defColor: {r: 0.3254902, g: 0.3921569, b: 0.6117647, a: 1}
   hurtColor: {r: 0.6117647, g: 0.3254902, b: 0.34246543, a: 1}
